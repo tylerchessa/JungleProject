@@ -4,7 +4,7 @@
 <h1>Admin Dashboard</h1>
 </header
 <div>
-<p class="alert-primary">We currently carry <strong><%= link_to @products.count, [:admin, :products] %></strong> products</p>
+<p class="alert-primary">We currently carry <strong><%= link_to @products.count, admin_products_path %></strong> products</p>
 <p class="alert-primary">We currently have <strong><%= @categories.count %></strong> categories</p>
 </div>
 </section>
