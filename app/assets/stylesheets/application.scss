@@ -55,6 +55,7 @@ form.button_to {
 }
 
 .hero nav {
+  flex-direction: column;
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
 }
@@ -91,11 +92,25 @@ form.button_to {
 }
 
 .sticky-nav {
+  flex-direction: column;
   background: green;
   position: sticky;
   top: 0;
   z-index: 900;
   font-weight: 700;
+
+  .container {
+    flex-direction: row;
+  }
+
+  .login-logout {
+   justify-content: flex-end;
+   a {
+    color: rgba(255, 255, 255, 0.55);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+   }
+  }
 
   .navbar-brand {
     font-weight: 900;
