@@ -1,0 +1,9 @@
+<tr>
+  <td><%= image_tag(line_item.product.image_url, alt: line_item.product.name, height: '50') %></td>
+  <td><%= link_to line_item.product.name, product_path(line_item.product) %></td>
+  <td><%= truncate(line_item.product.description,length: 125) %></td>
+  <td><%= line_item.quantity %></td>
+  <td><%= number_to_currency(line_item.item_price_cents / 100.0, precision: 2)  %></td>
+  <td><%= number_to_currency(line_item.total_price_cents / 100.0, precision: 2) %></td>
+</tr>
+

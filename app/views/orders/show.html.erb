@@ -4,8 +4,33 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th></th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.line_items.each do |line_item| %>
+      <%= render partial: 'line_item', locals: { line_item: line_item } %>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5"><strong>Total:</strong></td>
+      <td><%= number_to_currency(@order.total_cents / 100.0, precision: 2) %></td>
+    </tr>
+  </tfoot>
+</table>
+
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <p><%= @order.email %></p>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
