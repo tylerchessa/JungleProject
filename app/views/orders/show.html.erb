@@ -4,11 +4,11 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-<table class="table">
+  <div class="panel panel-default items">
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Product</th>
-      <th></th>
+      <th colspan="2" style="text-align: center;">Product</th>
       <th>Description</th>
       <th>Quantity</th>
       <th>Price</th>
@@ -27,6 +27,7 @@
     </tr>
   </tfoot>
 </table>
+</div>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
