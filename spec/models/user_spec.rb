@@ -1,4 +1,5 @@
-# require 'rails_helper'
+require 'rails_helper'
+require 'user.rb'
 
 RSpec.describe User, type: :model do
   describe "Validations" do
@@ -46,5 +47,11 @@ RSpec.describe User, type: :model do
         user.save
         expect(user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
-end
+  end
+    describe '.authenticate_with_credentials' do
+      it "is not valid if it is not authenticate" do
+        user1 = User.authenticate_with_credentials("notarealuser@gmail.com", "password")
+        expect(user1).to be_nil
+      end
+  end
 end
