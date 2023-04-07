@@ -49,9 +49,20 @@ RSpec.describe User, type: :model do
       end
   end
     describe '.authenticate_with_credentials' do
+      let(:user){User.new(first_name: "tyler", last_name: "chessa", email: "tylerchessa@gmail.com", password: "password", password_confirmation: "password")}
       it "is not valid if it is not authenticate" do
         user1 = User.authenticate_with_credentials("notarealuser@gmail.com", "password")
         expect(user1).to be_nil
+      end
+      it "allows for case to be different for email" do
+        user.save
+        user1 = User.authenticate_with_credentials("TYLERCHESSA@gmail.com", "password")
+        expect(user1).to eq(user)
+      end
+      it "gets rid of leading and trailing white space for email" do
+        user.save
+        user1 = User.authenticate_with_credentials("  tylerchessa@gmail.com  ", "password")
+        expect(user1).to eq(user)
       end
   end
 end
