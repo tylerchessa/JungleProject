@@ -5,7 +5,7 @@ describe('The Login Page', () => {
   const randomString = Math.random().toString(36).substring(2);
   it('allows a user to sign up', function () {
     // cy.exec('bin/rails db:reset', {failOnNonZeroExit: false})
-    cy.visit('/users/new')
+    cy.get('.login-logout').contains('Sign Up').click()
   
     cy.get('input[name="user[first_name]"]').type("tyler")
     cy.get('input[name="user[last_name]"]').type("chessa")
@@ -22,8 +22,8 @@ describe('The Login Page', () => {
 
   })
   it('allows a user to log in', function () {
-    cy.visit('/login')
-    cy.get('input[name="login[email]"]').type(`${randomString}@gmail.com`)
+    cy.get('.login-logout').contains('Log In').click()
+    cy.get('input[name="login[email]"]').type(`newuser@gmail.com`)
     cy.get('input[name="login[password]"]').type("password")
     cy.get('input[type="submit"]').click()
 

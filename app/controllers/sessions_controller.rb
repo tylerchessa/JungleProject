@@ -10,9 +10,6 @@ class SessionsController < ApplicationController
     # convert to lowercase to match email in db in case they had caps lock on:
       user = User.authenticate_with_credentials(params[:login][:email], params[:login][:password])
       if user
-      puts "puts***#####"
-      puts user
-      puts "PUTS*****$$$"
       session[:user_id] = user.id.to_s
       redirect_to root_path, notice: 'Successfully logged in!'
       else

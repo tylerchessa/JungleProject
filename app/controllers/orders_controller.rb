@@ -37,6 +37,8 @@ class OrdersController < ApplicationController
   end
 
   def create_order(stripe_charge)
+    puts params.inspect
+    user = User.find_by(email: params[:stripeEmail])
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_subtotal_cents,
@@ -54,6 +56,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    UserMailer.with(user: user, order: order).order_confirmation.deliver
     order
   end
 
